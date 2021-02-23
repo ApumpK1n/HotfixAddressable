@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Content Update
+  m_EditorClassIdentifier: 
+  m_GroupName: Content Update
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 5658862097f53cd4fa9f6d523c358332
+  m_SerializeEntries:
+  - m_GUID: 9edbfd91c741c03468088c9a114d13b4
+    m_Address: Assets/CanNotChangePost/A_1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 1771948018340994353, guid: 9edbfd91c741c03468088c9a114d13b4,
+      type: 3}
+    m_TargetAsset: {fileID: 1771948018340994353, guid: 9edbfd91c741c03468088c9a114d13b4,
+      type: 3}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 34fbdb88b9965654ea3d469fb5ef1f43, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 309ae06e133266e48a5567c333b79cf3, type: 2}
+    - {fileID: 11400000, guid: 3e45ae815650bb946a3e7c98f4c5ab2c, type: 2}
