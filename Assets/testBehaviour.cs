@@ -15,28 +15,31 @@ public class testBehaviour : MonoBehaviour
     private List<AsyncOperationHandle<GameObject>> handles = new List<AsyncOperationHandle<GameObject>>();
     private List<GameObject> instances = new List<GameObject>();
 
+    VersionManager manager;
     private void Start()
     {
-        var opInit = Addressables.InitializeAsync();
-        opInit.Completed += handle =>
-        {
-            var resLocator = handle.Result;
-            var resKeys = resLocator.Keys.ToList();
-            Debug.LogFormat("Addressables.InitializeAsync Completed: {0}, {1}", resLocator.LocatorId, resKeys.Count);
-            foreach (var key in resKeys)
-            {
-                IList<IResourceLocation> locations;
-                var result = resLocator.Locate(key, typeof(Object), out locations);
-                Debug.LogFormat("Res Locator Key: {0}, Count: {1}", key, result ? locations.Count : 0);
-                if (result)
-                {
-                    for (int i = 0; i < locations.Count; i++)
-                    {
-                        Debug.LogFormat("[{0}] Resource Key: {1} Locator: {2}", i, key, locations[i]);
-                    }
-                }
-            }
-        };
+        manager = GetComponent<VersionManager>();
+        Debug.developerConsoleVisible = true;
+        //var opInit = Addressables.InitializeAsync();
+        //opInit.Completed += handle =>
+        //{
+        //    var resLocator = handle.Result;
+        //    var resKeys = resLocator.Keys.ToList();
+        //    Debug.LogFormat("Addressables.InitializeAsync Completed: {0}, {1}", resLocator.LocatorId, resKeys.Count);
+        //    foreach (var key in resKeys)
+        //    {
+        //        IList<IResourceLocation> locations;
+        //        var result = resLocator.Locate(key, typeof(Object), out locations);
+        //        Debug.LogFormat("Res Locator Key: {0}, Count: {1}", key, result ? locations.Count : 0);
+        //        if (result)
+        //        {
+        //            for (int i = 0; i < locations.Count; i++)
+        //            {
+        //                Debug.LogFormat("[{0}] Resource Key: {1} Locator: {2}", i, key, locations[i]);
+        //            }
+        //        }
+        //    }
+        //};
         Debug.LogFormat("Addressable.Build__Path: " + Addressables.BuildPath);
         Debug.LogFormat("Addressable.RuntimePath: " + Addressables.RuntimePath);
     }
@@ -85,6 +88,7 @@ public class testBehaviour : MonoBehaviour
                 
                 
                 var resLocator = opInitHandle.Result;
+                Debug.Log("Download:" + resLocator.Keys);
                 var opGetDownloadSize = Addressables.GetDownloadSizeAsync(resLocator.Keys);
 
                 opGetDownloadSize.Completed += handle =>
@@ -170,7 +174,7 @@ public class testBehaviour : MonoBehaviour
 
             var handle = Addressables.LoadAssetAsync<GameObject>("Assets/CanNotChangePost/A_1.prefab");
             handle.Completed += onLoadDone;
-            
+
             handles.Add(handle);
         }
         if (GUILayout.Button("UnLoad"))

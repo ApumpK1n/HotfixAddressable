@@ -23,6 +23,14 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: d8ecbb1dc66066c49a316b451dafc289
+    m_Address: Assets/CanNotChangePost/A_2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 1771948018340994353, guid: d8ecbb1dc66066c49a316b451dafc289,
+      type: 3}
+    m_TargetAsset: {fileID: 1771948018340994353, guid: d8ecbb1dc66066c49a316b451dafc289,
+      type: 3}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 34fbdb88b9965654ea3d469fb5ef1f43, type: 2}
   m_SchemaSet:
