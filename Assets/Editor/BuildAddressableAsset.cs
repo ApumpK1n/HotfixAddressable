@@ -11,6 +11,7 @@ public class BuildAddressableAsset
     public static void BuildContent()
     {
         CreateVersionBuild.CreateVersion();
+        AddressableAssetSettings.CleanPlayerContent(AddressableAssetSettingsDefaultObject.Settings.ActivePlayerDataBuilder);
         AddressableAssetSettings.BuildPlayerContent();
     }
 
