@@ -11,6 +11,7 @@ public class BuildAddressableAsset
     public static void BuildContent()
     {
         CreateVersionBuild.CreateVersion();
+        SetDataBuilder();
         AddressableAssetSettings.CleanPlayerContent(AddressableAssetSettingsDefaultObject.Settings.ActivePlayerDataBuilder);
         AddressableAssetSettings.BuildPlayerContent();
     }
@@ -19,12 +20,14 @@ public class BuildAddressableAsset
     public static void BuildUpdate()
     {
         CreateVersionBuild.CreateVersion();
+        SetDataBuilder();
         string path = ContentUpdateScript.GetContentStateDataPath(false);
         ContentUpdateScript.BuildContentUpdate(AddressableAssetSettingsDefaultObject.Settings, path);
     }
 
     public static void ShellBuild(string profile = "Default")
     {
+        SetDataBuilder();
         var aaSettings = AddressableAssetSettingsDefaultObject.Settings;
 
         if (aaSettings != null && aaSettings.BuildRemoteCatalog)
@@ -42,6 +45,20 @@ public class BuildAddressableAsset
             }
         }
 
+    }
+
+    public static void SetDataBuilder(string name = "Use Existing Build (requires built groups)")
+    {
+        AddressableAssetSettings settings = AddressableAssetSettingsDefaultObject.Settings;
+        for (int i = 0; i < settings.DataBuilders.Count; i++)
+        {
+            var dataBuilder = settings.GetDataBuilder(i);
+            if (name == dataBuilder.Name)
+            {
+                AddressableAssetSettingsDefaultObject.Settings.ActivePlayModeDataBuilderIndex = i;
+                return;
+            }
+        }
     }
 }
 
